@@ -1,0 +1,13 @@
+@for $i from 1 through 3 {
+  .photo-box:nth-child(#{$i}) {
+    background-image: url("../assets/phoster#{$i}.png");
+  }
+} 
+
+@for $hojun from 1 through 3 {
+  .photo-box:nth-child(#{$hojun}) {
+    profile:nth-child("../assets/phoster#{$hojun}.png");
+  }
+} 
+
+// #{$변수명}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>의도적인 마진 패딩</title>
+    <style>
+      html {
+        /* 폰트를 키우기 위해 32px로 조정 -> 결론은 폰트도 커지지만 박스모델이 커지므로 UI가 깨지는 확률이 높음 */
+        font-size: 32px;
+      }
+      div {
+        width: 2rem;
+        height: 2rem;
+        background-color: red;
+      }
+
+      body {
+        margin :0;
+      }
+
+      p {
+        margin: -30px;
+      }
+    </style>
+</head>
+<body>
+  <div>
+    <p>hello world</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <article class="parent">
+      <ol>
+          <li><button class="btn-first" type="button">버튼1</button></li>
+          <li><button type="button">버튼2</button></li>
+          <li><button type="button">버튼3</button></li>
+      </ol>
+    </article>  
+    <script>
+      const btnFirst = document.querySelector('.btn-first');
+      btnFirst.addEventListener('click', (event) => {
+        console.log(event);
+      });
+
+      // innerHTML 은 요소(element) 내에 포함된 HTML 마크업을 가져오거나 설정합니다.
+      // innerText 속성은 요소의 렌더링된 텍스트 콘텐츠를 나타냅니다. (렌더링된에 주목하세요. innerText는 "사람이 읽을 수 있는" 요소만 처리합니다.)
+      // textContent 속성은 노드의 텍스트 콘텐츠를 표현합니다.
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+      console.log("------------------")
+      // true와 숫자값 비교
+      console.log(true == 1);   // true
+      console.log(false == 0);  // true
+      console.log(true === 1);  // false
+      console.log(false === 0);  // false
+
+      console.log("------------------")
+      console.log(NaN == NaN);   // false
+      console.log(NaN === NaN);   // false
+
+      console.log("------------------")
+      // true일 것 같은 혼란스러운 것
+      console.log(false == null);
+      console.log(false == NaN);
+      console.log(false == undefined);
+
+      console.log("------------------")
+      // + 연산자를 이용한 항변환
+      console.log(+false);  // 0
+      console.log(+true);   // 1
+      console.log(-false);  // -0
+      console.log(-true);   // -1
+      console.log(false * 1);  // 0
+      console.log(true * 1);   // 1
+      console.log(1 + "12");    // 112(string)
+      console.log(NaN + "");  // "NaN"
+      console.log(Infinity + ""); // "Infinity"
+      console.log(true + "");  // "true"
+      console.log(false + ""); // "false"
+      console.log("12" + 1);  // 121(string)
+      console.log(+"100" + 10);  // 110
+
+      console.log(0 == -0);
+
+      //아래와 같이 짤 필요X
+      console.log("2" + "2" - "2");
+      console.log("2" + "2");
+      console.log("2" - "2"); // 수학적 연산을 하려고 하는구나로 인식하고 Number로 던져줌
+      console.log("a" - "a");
+
+    </script>    
+</body>
+</html>

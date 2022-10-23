@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string</title>
+</head>
+<body>
+    <script>
+      //문자열
+      let txt = "ABCDEFGHIJK";
+      console.log(txt + txt);
+
+      // 0번째 문자 출력
+      console.log(txt[0]);
+      
+      // undefined
+      console.log(txt[-1]);
+
+      // EFG 출력
+      console.log(txt[4] + txt[5] + txt[6]);
+
+      let txt2 = "mom said 'hello world'";
+      let txt3 = "mom said \"hello world\"";  // \ -> 이스케이프문자로 뒤에가 특수문자라는 것을 알려주는 역할
+      let txt4 = "a\nb\ncde";                 //  \n -> 개행
+      let txt5 = "a\tbxde";                   // \t  -> 수평 탭
+      let txt6 = "10abc";
+      let txt7 = 10.1423;
+      let txt8 = "10.1abc"
+
+
+      console.log(txt2);
+      console.log(txt3);
+      console.log(txt4);
+      console.log(txt5);
+      console.log(txt5[2]);   // \t는 1개의 문자열로 인식함
+      console.log(txt6 + txt6);
+      console.log(parseInt(txt6) + parseInt(txt6));
+      console.log(Number(txt7));
+      console.log(parseFloat(txt8) + parseFloat(txt8));
+
+      //string의 매서드
+      console.log(txt.length)   // 11글자이지만 Index는 Length -1
+
+      //indexOf는 정규표현식을 허용하지 않는다
+      console.log(txt.indexOf("E"));
+      console.log(txt.search("F"));
+
+      // 존재하지 않는 값을 넣으면 -1로 출력됨 -> 0은 0번째 index가 있기때문에 0으로 안나옴, 0 이외에 모든 숫자는 true
+      console.log(txt.indexOf("Z"));
+      console.log(txt.search("Z"));
+
+
+      let regExp = /CD/;
+      console.log(txt.search(regExp));
+
+    </script>
+</body>
+</html>

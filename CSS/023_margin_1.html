@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin 병합 현상</title>
+    <style>
+        /* margin은 60으로 적용됨! */
+        /* 형제 간의 마진 겹침 현상 */
+        div:nth-child(1) {
+            margin-bottom: 30px;
+        }
+
+        div:nth-child(2) {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div>hello</div>
+    <div>hello</div>
+</body>
+</html>

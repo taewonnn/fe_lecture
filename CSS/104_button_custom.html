@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>custom</title>
+    <style>
+      /* 숨기기!!! */
+      .txt-hide {
+        position: absolute;
+        clip: rect(0 0 0 0);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+      }
+
+      .labl-hold::before {
+        display: inline-block;
+        content: '';
+        width: 22px;
+        height: 22px;
+        background-image: url(./img/button/icon_check_empty.png);
+        vertical-align: -5px;
+      }
+
+      .inp-hold:checked+.labl-hold::before {
+        background-image: url(./img/button/icon_check.png);
+      }
+      
+      .inp-hold:focus+.labl-hold::before {
+        outline: 2px solid #000;
+        border-radius: 5px;
+        outline-offset: 50%;
+      }
+      
+    </style>
+</head>
+<body>
+  <input type="checkbox" id="inpHold" class="inp-hold txt-hide">
+  <label for="inpHold" class="labl-hold">로그인 상태유지</label>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비교연산자</title>
+</head>
+<body>
+    <script>
+      const one = 10;
+      const two = 3;
+      const one_ = '10';
+
+      console.log(one > two);
+      console.log(one >= two);
+      console.log(one < two);
+      console.log(one <= two);
+      console.log(one == two);
+      console.log(one != two);
+      console.log(one === two);   // 다른언어에 없음
+      console.log(one !== two);   // 다른언어에 없음
+
+      // 어려운 부분
+      console.log("----------")
+      console.log(one == one_);   //true로 나옴
+      console.log(one === one_);   // false로 나옴(타입까지 구분하려면 등호 세개 사용)
+    </script>
+</body>
+</html>

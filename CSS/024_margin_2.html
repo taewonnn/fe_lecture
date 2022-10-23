@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin 병합 현상</title>
+    <style>
+        /* margin은 60으로 적용됨! */
+        /* 마진병합현상은  */
+        .parent {
+          height: 200px;
+          background-color: red;
+          margin-top: 50px;
+          /* overflow: hidden; */
+          /* overflow로 마진겹침현상 해결1 */
+          
+          /* display: inline-block; */
+          /* inline-block으로 마진겹침현상 해결2 */
+
+          /* border: 1px solid black; */
+          /* border로 마진겹침현상 해결3 */
+
+          /* display: flow-root; */
+          /* flow-root로 마진겹침현상 해결4(IE지원 불가) */
+        }
+
+        .child {
+          width: 100px;
+          height: 100px;
+          background-color: blue;
+          margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+</body>
+</html>

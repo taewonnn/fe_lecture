@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template prac</title>
+    <style>
+      body {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr)
+        grid-template-areas:
+        ".      .       .   time"
+        "header header header header"
+        "aside-left main  main aside-right"
+        "footer footer footer footer"
+        ;
+      }
+
+      .time {
+        grid-area:time;
+      }
+
+      header {
+        grid-area: header;
+      }
+
+      .aside-left {
+        grid-area: aside-left;
+      }
+
+      .aside-right {
+        grid-area: aside-right;
+      }
+
+      main {
+        grid-area: main;
+      }
+
+      footer {
+        grid-area: footer;
+      }
+
+    </style>
+</head>
+<body>
+    <p class="time">2022. 09. 19.</p>
+    <header>header</header>
+    <main>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam impedit natus ipsam cumque error eveniet reprehenderit, quaerat repellendus earum, dolor voluptatibus. Provident odio quas repudiandae quaerat, labore nihil facilis distinctio?
+    Nesciunt cumque, repellat similique voluptates nemo soluta enim saepe quae officia architecto itaque dolorem tempore dolor id repellendus! Distinctio asperiores ratione, quasi possimus aspernatur sapiente modi qui porro architecto dicta.</main>
+    <aside class="aside-left">aside</aside>
+    <aside class="aside-right">aside</aside>
+    <footer>footer</footer>
+</body>
+</html>

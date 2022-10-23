@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM_detail</title>
+</head>
+<body>
+    <form accept="013.html" method="get">
+      <input type="text" name="성별" value="남" readonly>
+      <input type="text" name="test" maxlength="10">
+      <input type="text" name="test" minlength="10">
+      개인정보 동의여부
+      <input type="checkbox" name="test" required>
+      <!-- 개인정보 동의하는지 체크 -->
+      <input type="text" placeholder="통장잔고" name="test">
+      <input
+      type="tel"
+      name="tlno"
+      id="tlno"
+      title="전화번호를 입력하세요."
+      placeholder="00*-000*-0000"
+      pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}"
+      maxlength="13"/>
+      <button type="submit">회원가입</button>
+    </form>
+</body>
+</html>

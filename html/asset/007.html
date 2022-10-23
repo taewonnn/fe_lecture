@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded content</title> 
+</head>
+<body>
+    <img src="a.jpg" alt="">
+    <!-- alt가 비어있으므로 스크린리더가 읽지 않음 -->
+    <img src="a.jpg">
+    <!-- 스크린 리더가 'a'를 읽음 -->
+    <img src="a.jpg" alt="이미지">
+    <!-- 스크린 리더가 '이미지'라고 읽음 -->
+
+    <!-- 
+    절대경로 : 현재 파일 위치와 관련없이 열 수 있는 경로
+              ex) http://www.paullab.co.kr/images/ceo.png
+              / C: \ C:\Users\paullab\Desktop\FE3\HTML\jeju.jpg
+    상대경로 : 나(지금 열려있는 파일) 기준  
+    -->
+
+    <img
+  width="200px"
+  srcset="img/logo_1.png 2x,
+          img/logo_2.png 3x"
+  src="a.jpg"
+  alt="test">
+
+
+
+
+
+</body>
+</html>

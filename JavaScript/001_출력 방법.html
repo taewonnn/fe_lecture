@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>출력 방법</title>
+</head>
+<body>
+    <p id="one"></p>
+    <script>
+      // about:blank에서 개발자 도구 -> console에서 document. 을 입력하면 여러가지 document 매서드를 볼 수 있음.
+      document.getElementById("one").innerHTML = "hello <strong>world1</strong>";
+
+      console.log("hello world2");
+      
+      window.alert("hello world3");
+      
+      document.write("hello world4");
+    </script>
+</body>
+</html>

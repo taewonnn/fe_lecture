@@ -1,0 +1,25 @@
+: root {
+  --max-width: 1320px;
+}
+
+.max-width {
+  border: 2px solid royalblue;
+  width: var(--max-width);
+  margin: 0 auto;
+}
+
+header {
+  background-color: salmon;
+}
+
+main {
+  background-color: sandybrown;
+}
+
+aside {
+  background-color: aquamarine;
+}
+
+footer {
+  background-color: gold;
+}

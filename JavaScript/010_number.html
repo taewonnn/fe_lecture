@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>number</title>
+</head>
+<body>
+    <script>
+      //number
+      let n1 = 10000;
+      let n2 = 10.123123;
+      let n3 = 31;
+      let n4 = 1001;
+      let n5 = 1111;
+      let s = "1000000000";
+      let s2 = "1,000,000,000";
+      console.log(parseInt(n1));
+      console.log(parseInt(n2));
+      console.log(parseInt(n3, 2));   // 2진수로
+      console.log(parseInt(n4, 2));
+      console.log(parseInt(n5, 2)); 
+      console.log(n2.toFixed(3));  // 소숫점 세자리까지
+
+
+      console.log("-------");
+      console.log(Number(true));
+      console.log(Number(false));
+      console.log(Number(""));
+      console.log(Number(" "));
+
+      console.log("-------");
+      console.log(Number("hello"));
+      console.log(Number("10 20"));
+      console.log(Number("10     "));
+      console.log(Number("     10"));
+      console.log(Number("     10     "));
+
+      //Math
+      console.log(Math.PI);
+      console.log(Math.max(10, 20, 30, 1, 200, 3));
+      console.log(Math.min(10, 20, 30, 1 , 200, 3));
+
+      
+      let data = [10, 20, 30, 40]
+      //아래와 같이는 불가능
+      console.log(Math.max(data))
+      //아래와 같이 써야 원하는 값이 나옴
+      console.log(Math.max(...data))
+      
+      
+      //절댓값
+      console.log(Math.abs(-10));
+
+      //Math.round  반올림
+      console.log(Math.round(4.7));
+      console.log(Math.round(4.4));
+
+      //ceil(올림) floor(내림)
+      
+      //random
+      console.log(Math.random()*100);  // 100보다 작은 숫자 중 랜덤으로 뽑을 때
+
+      //sqrt(제곱근) pow(O의 O승)
+      console.log(Math.sqrt(64));
+      console.log(Math.pow(2, 3));
+      console.log(Math.pow(2, 4));
+
+      //Js에서 큰 숫자를 사용할 때는 BigInt를 사용 -> 확인 필요
+      // console.log(Number.MAX_SAFE_INTEGER)
+      console.log(BigInt(12312312312312312312312312) + 2n);
+
+      /*
+      1bit = 0과 1을 표현할 수 있는 최소 단위
+      8bit = 1byte
+      00000000 ~ 11111111 (0 ~ 255)
+          ex)IP -> 0.0.0.0 ~ 255.255.255.255
+      1024byte = 1KB
+      1024KB = 1MB
+      1024MB = 1GB
+      1024GB = 1TB
+      (KB,MB,GB,TB,PB)갈매기털빼
+      */
+
+
+      //2진수 계산법
+      //Ex. 275 -> 256 + 16 + 12 +1  -> 100010011
+
+        let one = 10;
+        console.log(one.toString());
+
+        //아래 10.의 .을 소숫점으로 판단하여 불가능
+        console.log(10.toString());
+        
+
+    </script>
+</body>
+</html>

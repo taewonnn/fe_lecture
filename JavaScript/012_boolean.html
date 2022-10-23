@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boolean</title>
+</head>
+<body>
+  <script>
+    
+    // const(참조 변경 불가) / let(변경 가능) / var(사용X)
+    // const를 사용할 것!
+    
+    let one = true;
+    let two = false;
+    let three;
+    let four = null;
+    let five = Infinity;   //비교(최댓값/최솟값)에서 많이 활용
+
+    console.log(Boolean(''));  // 문자열에 아무 것도 없으면 false
+    one = '';
+
+    console.log(Boolean(' '));  // 공백문자가 있으면 true
+    console.log(Boolean("abc"));  // true
+    console.log(Boolean(0));  // 0은 false
+    console.log(Boolean(100));  // 0 이외 모든 숫자 true
+    console.log(Boolean(-100));  // 0 이외 모든 숫자 true
+    console.log(Boolean(three)); // false
+    console.log(Boolean(four));  // false
+    console.log(Boolean(five));  // true
+
+    //어려운 부분
+
+    console.log(Boolean([]));  // 빈 array도 true
+    console.log(Boolean({}));  // true
+
+  </script>
+</body>
+</html>

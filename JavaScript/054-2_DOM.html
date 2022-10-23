@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <button class="btn-red">빨강</button>
+    <button>초록</button>
+
+    <script>
+      const mybtn2 = document.querySelector('.btn-red')
+      mybtn2.addEventListener('click', function(){
+        mybtn2.classList.add('green');
+        // mybtn2.classList.remove('green')
+        // mybtn2.classList.toggle('green')
+      })
+      
+    </script>
+</body>
+</html>
