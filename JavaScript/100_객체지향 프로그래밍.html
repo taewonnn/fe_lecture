@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+      // 객체지향 프로그래밍
+
+      // 객체지향은 프로그래밍 방법론중에 하나로 프로그램을 작성할 때 객체들을 만들어 서로 소통하도록하는 방법
+      // * 객체는 데이터의 묶음
+
+      const tw = {
+        name : 'taewon',
+        Phone : '010-9232-2394',
+        canwork : function() {
+          console.log('tw가 일 한다')
+        },
+        teaching : function(student) {
+          student.levelUp();
+        }
+      }
+
+      const student = {
+        level : 2,
+        levelUp : function() {
+          this.level++;
+        }
+      }
+
+      tw.teaching(student);   // student의 level이 2로 됨
+
+
+      // 새로운 객체를 만들 때
+      const you = tw;   // 얕은 복사 -> tw 요소를 바꾸면 you 요소도 바뀜
+      
+      // 새로운 객체를 만들 때 2
+      const you = {
+        name : 'taewon',
+        Phone : '010-9232-2394',
+        canwork : function() {
+          console.log('tw가 일 한다')
+        },
+        teaching : function(student) {
+          student.levelUp();
+        }
+      }   // 효율적이지 못함
+
+      // 생성자 함수  -> 객체를 만들 때 new 연산자와 함께 사용하는 함수
+      let myArr = new Array(1,2,3);
+
+
+      // 생성자의 장점 -> 생성자를 통해 생성된 객체는 같은 프로퍼티와 매서드를 공유할 수 있음
+      let myArr = new Array(1,2,3);
+      let myArr2 = new Array(4,5,6);
+
+      myArr2.length
+      myArr.length
+      
+      myArr.forEach(item=>{
+        console.log(item);
+      })
+
+      myArr2.forEach(item => {
+        console.log(item);
+      })
+
+
+      // 커스텀 생성자 만들기
+
+      // function Factory(){};
+      // const obj = new Factory();
+
+      // obj instanceof Factory   // true
+
+
+      function NewFactory(name){
+        this.name = name;
+        this.sayYourName = function(){
+          console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+        }
+      }
+
+      let robot1 = new NewFactory('브랜든');
+      let robot2 = new NewFactory('웨이드');
+
+
+      // 실습 : 음식 이름의 배열을 전달하면 배열안에서 랜덤하게 메뉴를 뽑아내는 로봇객체의 생성자를 만들어보세요.
+      function NewFactory(food) {
+        this.food = food; 
+        const chosenFood = food[Math.floor(Math.random() * food.length)]
+        this.choice = function () {
+          return (`이번에는 ${chosenFood}을 드시면 됩니다.`);
+        };
+      }
+
+      let whatToEat = new NewFactory(["짜장면", "짬뽕", "탕수육", "깐풍기", "유린기", "볶음밥"]);
+      console.log(whatToEat.choice()); 
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
