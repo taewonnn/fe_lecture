@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>jquery</title>
+</head>
+<body>
+    <p>hello hi</p>
+    <p>hello !!</p>
+    <p>hello world</p>
+    <p>hello</p>
+    <p>hello world</p>
+    <div>
+      <label>
+        <input type="radio" name="newsletter" value="Hot Fuzz">
+        <span>name?</span>
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="radio" name="newsletter" value="Cold Fusion">
+        <span>value?</span>
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="radio" name="newsletter" value="Evil Plans">
+        <span>value?</span>
+      </label>
+    </div>
+
+    <ul>
+      <li>Does the UL contain an LI?</li>
+    </ul>
+    <ul>
+      hello world
+    </ul>
+    <style>
+      .full {
+          border: 1px solid red;
+      }
+    </style>
+    <script>
+      $("input[value='Hot Fuzz']").next().text("Hot Fuzz");
+
+      console.log($("p:contains(world)"))
+
+      $("p:contains(world)").css("color", "red");
+
+      // 자주사용!
+      $("ul").has("li").addClass("full");  
+    </script>
+</body>
+</html>
