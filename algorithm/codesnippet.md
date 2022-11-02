@@ -882,19 +882,20 @@ const list = {
   head: null
 }
 
-let list1 = {value: 12, next: null, pre: null}
-let list2 = {value: 99, next: null, pre: null}
-let list3 = {value: 37, next: null, pre: null}
-let list4 = {value: 2, next: null, pre: null}
+let list1 = { value: 12, next: null, pre: null };
+let list2 = { value: 99, next: null, pre: null };
+let list3 = { value: 37, next: null, pre: null };
+let list4 = { value: 2, next: null, pre: null };
 
-list1.next = list2
-list2.next = list3
-list3.next = list4
+list.head = list1
+list1.next = list2;
+list2.next = list3;
+list3.next = list4;
 
-list1.pre = list.head
-list2.pre = list1
-list3.pre = list2
-list4.pre = list3
+list1.pre = list;
+list2.pre = list1;
+list3.pre = list2;
+list4.pre = list3;
 ```
 
 
@@ -935,9 +936,262 @@ l.append(30);
 
 
 ### 1.4.3 트리와 그래프
+  - 깊스너큐 -> 깊이 : 스택 / 너비 : 큐
+  - 탐색을 위한 자료구조
+  - 나무 뿌를 거꾸로 한 모양
+
+* tree object로 구현하기(이미지: tree만들기_트리순회_2.png)
+```js
+const tree = {
+  root: {
+    value: 5,
+    left: {
+      value: 3,
+      left: {
+        value: 1,
+        left: null,
+        right: null
+      },
+      right: {
+        value: 4,
+        left: null,
+        right: null
+      }
+    },
+    right: {
+      value: 8,
+      left: {
+        value: 6,
+        left: null,
+        right: null
+      },
+      right: {
+        value: 9,
+        left: null,
+        right: null
+      }
+    }
+  }
+}
+```
+* tree array로 구현하기  // 깃확인
+```js
+[5, [3, [1, [], []], [4, [], []]]], [8, [6, [], []], [9, [], []]]
+```
 
 
+* node를 만들어서 삽입하는 식으로 구현
+```js
+  const root = {
+    value: 55,
+    left: null,
+    right: null
+  }
 
+  node1 = {value: 53,left: null,right: null}
+  node2 = {value: 99, left: null,right: null}
+  node3 = {value: 37, left: null,right: null}
+  node4 = {value: 54, left: null,right: null}
+
+  root.left = node1
+  root.right = node2
+  
+  node1.left = node3
+  node1.right = node4
+
+  root.root;
+  // 55
+  root.right.value;
+  // 99
+  root.left.value;
+  // 53
+  root.left.left.value;
+  // 37
+```
+
+
+* object나 array로 tree나 linked list를 구현할 수 있는데 굳이 class로 구현하는 이유?
+
+// 1. 더 가벼운 모델을 만들기 위해서
+// 2. 확장성
+// 3. OOP(Object-Oriented-Programing)에 철학에 맞기 때문에
+
+
+* tree를 class로 구현하기
+```js
+class Node {
+  constructor(data) {
+    this.data = data;
+    // this.child = [];   // 2진트리가 아닌 트리를 만들 때 사용가능(자식이 여럿일 때)
+    this.left = null;
+    this.right = null;
+  }
+}
+
+root = new Node(55)
+node1 = new Node(53)
+node2 = new Node(99)
+node3 = new Node(37)
+node4 = new Node(54)
+
+root.left = node1;
+root.right = node2;
+
+node1.left = node3;
+node1.right = node4;
+```
+
+* 트리 구현(완벽한 이진트리 코드가 아닙니다. 로직설명에 초점을 맞춰짐)
+
+```js
+class Node {
+  constructor(data) {
+    this.data = data;
+    // this.child = [];   // 2진트리가 아닌 트리를 만들 때 사용가능(자식이 여럿일 때)
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class Tree {
+  constructor(data) {
+    let init = new Node(data);
+    this.root = init;
+    this.length = 0;
+  }
+
+  insert(data) {
+    let 새로운노드 = new Node(data);
+    let 순회용현재노드 = this.root
+
+    while(순회용현재노드) {
+      if(data = 순회용현재노드.data) {
+        // 새로 들어온 값이 이미 존재하는 값이면 트리에 값을 추가하지 않는다!
+        return 
+      } else if(data < 순회용현재노드.data) {
+        // 들어온 데이터가 작은 경우 왼쪽에 붙여야한다!
+        if(!순회용현재노드.left) {
+          순회용현재노드.left = 새로운노드;
+          this.데이터수 += 1;
+          return
+        }
+        순회용현재노드 = 순회용현재노드.left;
+      } else if(data > 순회용현재노드.data) {
+        // 들어온 데이터가 큰 경우 오른쪽에 붙여야한다!
+        if(!순회용현재노드.right // !로 오른쪽에 비어있는지 확인한 것) {
+          순회용현재노드.right = 새로운노드;
+          this.데이터수 += 1;
+          return
+        }
+        순회용현재노드 = 순회용현재노드.right;
+      }
+    }
+  }
+}
+
+let t = new Tree(5);
+t.insert(3)
+t.insert(8)
+t.insert(1)
+t.insert(4)
+t.insert(6)
+t.insert(7)
+```
+
+
+```js
+class Node {
+    constructor(data){
+        this.data = data
+        // this.child = [] // 2진트리가 아닌 트리를 만들 때 사용할 수 있습니다.
+        this.left = null
+        this.right = null
+    }
+}
+
+class Tree {
+    constructor(data){
+        let init = new Node(data)
+        this.root = init
+        this.length = 0
+    }
+
+    insert(data){
+        let 새로운노드 = new Node(data)
+        let 순회용현재노드 = this.root
+
+        while(순회용현재노드){
+            if(data == 순회용현재노드.data){
+                return
+            } else if (data < 순회용현재노드.data){
+                if(!순회용현재노드.left){
+                    순회용현재노드.left = 새로운노드
+                    this.length += 1
+                    return
+                }
+                순회용현재노드 = 순회용현재노드.left
+            } else if (data > 순회용현재노드.data){
+                if(!순회용현재노드.right){
+                    순회용현재노드.right = 새로운노드
+                    this.length += 1
+                    return
+                }
+                순회용현재노드 = 순회용현재노드.right
+            }
+        }
+    }
+
+    //깊스너큐
+    DFS(){
+    // 깊이우선탐색, DFS(Depth First Search)
+    // Stack 이용!
+    let 방문경로 = []
+    let 스택 = [this.root]
+
+    while(스택.length !== 0){
+      let current = 스택.pop()
+        if (current.right){
+          스택.push(current.right)
+      }
+        if (current.left){
+          스택.push(current.left)
+        }
+        방문경로.push(current.data)
+      }
+      return 방문경로
+    }
+
+    BFS(){
+    // 너비우선탐색, BFS(Breadth First Search)
+    // Queue 이용!
+    let 방문경로 = []
+    let 큐 = [this.root]
+
+    while(큐.length !== 0){
+      let current = 큐.shift()
+      if (current.right){
+        큐.push(current.right)
+      }
+      if (current.left){
+        큐.push(current.left)
+      }
+      방문경로.push(current.data)
+    }
+    return 방문경로
+  }
+}
+
+let t = new Tree(5)
+t.insert(3)
+t.insert(8)
+t.insert(1)
+t.insert(4)
+t.insert(6)
+t.insert(9)
+
+t.DFS()
+```
+ 
 
 ### 1.4.4 정렬 알고리즘
   -   재미있는 사실(재미없을 수도 있습니다. 사례를 말씀드릴게요.)
@@ -1670,10 +1924,254 @@ console.log(solution('1S2D3T'))
         }
       }
   }
-  return time
+  return time;
 }
 ```
 
+### 2.1.4 오픈채팅방(19년)
+// https://school.programmers.co.kr/learn/courses/30/lessons/42888
 
 
 
+* 풀이를 위한 기본 문법
+```js
+let test = [
+  'A 10 !',
+  'B 20 !',
+  'A 22',
+  'B 20 @',
+  'A 21 @'
+]
+
+test.forEach(s => {
+  console.log(s)
+  console.log(s.split(' '))
+  console.log('--------')
+  })
+
+  test.forEach(s => {
+  console.log(s)
+  const [a, b, c] = s.split(' ')
+  console.log(a, b, c)
+  console.log('--------')
+  })
+```
+
+* step 별 풀이
+
+```js
+
+//풀이방식1 -> 깃확인
+
+
+//step1
+let record = [
+  "Enter uid1234 Muzi",
+  "Enter uid4567 Prodo",
+  "Leave uid1234",
+  "Enter uid1234 Prodo",
+  "Change uid4567 Ryan",
+];
+
+function solution(record) {
+  let answer = [];
+  let user = {}
+  for(const i of record) {
+    const [상태, 아이디, 닉네임] = i.split(' ');
+    answer.push([상태, 아이디, 닉네임]);
+  }
+  return answer;
+}
+
+solution(record);
+
+//step2
+let record = [
+  "Enter uid1234 Muzi",
+  "Enter uid4567 Prodo",
+  "Leave uid1234",
+  "Enter uid1234 Prodo",
+  "Change uid4567 Ryan",
+];
+
+function solution(record) {
+  let answer = [];
+  let 유저정보 = {}
+  for(const i of record) {
+    const [상태, 아이디, 닉네임] = i.split(' ');
+    if(상태 === 'Enter') {
+      유저정보[아이디] = 닉네임;
+      answer.push([아이디, '님이 들어왔습니다.']);
+    } else if(상태 === 'Leave') {
+      answer.push([아이디, '님이 나갔습니다.'])
+    } else if(상태 === 'Change') {
+      유저정보[아이디] = 닉네임;
+    }
+  }
+  // console.log(유저정보);
+  answer = answer.map(item => 유저정보[item[0]] + item[1])
+  return answer;
+}
+
+solution(record);
+
+```
+
+
+### 2.1.5 실패율(19년)
+// https://school.programmers.co.kr/learn/courses/30/lessons/42889
+
+```js
+// 스테이지에 도달했으나 아직 클리어하지 못한 플레이어의 수 / 스테이지에 도달한 플레이어 수
+
+// 실패율 === 아직 클리어 못한 플레이어의 수 / 도달한 플레이어 수
+// 전체 스테이지의 개수 N
+// 스테이지의 번호가 담긴 배열 stages가 매개변수
+
+// 실패율이 높은 스테이지부터 내림차순으로 스테이지의 번호가 담겨있는 배열을 return 하도록 solution 함수
+// 만약 실패율이 같은 스테이지가 있다면 작은 번호의 스테이지가 먼저 오도록 하면 된다. (오름차순)
+
+// N    stages                      result
+// 5    [2, 1, 2, 6, 2, 4, 3, 3]    [3, 4, 2, 1, 5]
+// 4    [4, 4, 4, 4, 4]                [4, 1, 2, 3]
+
+// 스테이지에 도달한 사람의 수
+// 1stage === 1
+// 2stage === 3
+// 3stage === 2
+// 4stage === 1
+// 5stage === 0
+
+
+// 실패율
+// 1stage === 1/8
+// 2stage === 3/7 === 3/(8-1)
+// 3stage === 2/4 === 2/(7-3)
+// 4stage === 1/2 === 1/(4-2)
+// 5stage === 0/1 === 0/(2-1)
+
+// [2, 1, 2, 6, 2, 4, 3, 3].filter((user) => user === 3);
+// (2) [3, 3]
+```
+
+* 문제풀이를 위한 기본 매서드
+```js
+[2, 1, 2, 6, 2, 4, 3, 3].filter((user) => user === 3);   // (2) [3, 3]
+[2, 1, 2, 6, 2, 4, 3, 3].filter((user) => user === 3).length;  // 2  
+```
+
+
+//풀이
+
+//step1 - stage에 머물고 있는 사람 리스트
+```js
+function solution(N, stages) {
+    let 실패율 = [];
+    let 유저수 = stages.length;
+    
+    for(let i = 1; i < N; i++) {
+      let 도달한사람수 = stages.filter((user) => user === i)
+      실패율.push(도달한사람수)
+    }
+    return 실패율;
+}
+
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3]);
+```
+
+
+//step2 - 실패율
+```js
+function solution(N, stages) {
+    let 실패율 = [];
+    let 유저수 = stages.length;
+    
+    for(let i = 1; i < N; i++) {
+      let 도달한사람수 = stages.filter((user) => user === i).length;
+      실패율.push(도달한사람수 / 유저수);
+      유저수 -= 도달한사람수;
+      console.log(유저수, 도달한사람수)
+    }
+    return 실패율;
+}
+
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3]);
+```
+
+
+//step3 - 정렬
+```js
+function solution(N, stages) {
+    let 실패율 = [];
+    let 유저수 = stages.length;
+    
+    for(let i = 1; i <= N; i++) {
+      let 도달한사람수 = stages.filter((user) => user === i).length;
+      let 확률 = 도달한사람수 / 유저수
+      실패율.push({stages: i})
+      유저수 -= 도달한사람수;
+      console.log(유저수, 도달한사람수)
+    }
+    // 정렬 기준 확인 필요.
+    실패율.sort((a, b) => {
+      if(a.확률 < b.확률) return 1;
+      if(a.확률 > b.확률) return -1;
+      if(a.확률 === b.확률) return 0;
+    })
+    return 실패율;
+}
+
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3]);
+```
+
+// step 3 정렬
+```js
+function solution(N, stages) {
+    let 실패율 = [];
+    let 유저수 = stages.length;
+
+    for (let i = 1; i <= N; i++) {
+        let 도달한사람수 = stages.filter((user) => user === i).length;
+        let 확률 = 도달한사람수 / 유저수;
+        실패율.push({ 스테이지: i, 확률 });
+        유저수 -= 도달한사람수;
+        console.log(유저수, 도달한사람수);
+    }
+
+    // 정렬 기준 확인 필요
+    실패율.sort((a, b) => {
+        if (a.확률 < b.확률) return 1;
+        if (a.확률 > b.확률) return -1;
+        if (a.확률 === b.확률) return 0;
+    });
+    return 실패율;
+}
+
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3]);
+```
+
+// step 4 스테이지만 출력
+```js
+function solution(N, stages) {
+    let 실패율 = [];
+    let 유저수 = stages.length;
+
+    for (let i = 1; i <= N; i++) {
+        let 도달한사람수 = stages.filter((user) => user === i).length;
+        let 확률 = 도달한사람수 / 유저수;
+        실패율.push({ 스테이지: i, 확률 });
+        유저수 -= 도달한사람수;
+        console.log(유저수, 도달한사람수);
+    }
+
+    // 정렬 기준 확인 필요
+    실패율.sort((a, b) => {
+        if (a.확률 < b.확률) return 1;
+        if (a.확률 > b.확률) return -1;
+        if (a.확률 === b.확률) return 0;
+    });
+    return 실패율.map((object) => object.스테이지);
+}
+
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3]);
+```
