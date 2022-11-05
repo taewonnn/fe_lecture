@@ -51,13 +51,14 @@ let data = [{
 
 // 여러가지 풀이
 
-function 평균값구하기(data){
+function 평균값구하기(daram){
   let sum = 0;
-  for(student of data){
+  for(student of daram){
       sum += student["중간고사점수"]
   }
-  return sum / data.length
+  return sum / daram.length
 }
+
 
 function 평균값구하기(data) {
   let 중간고사점수 = data.map((x) => x.중간고사점수)
