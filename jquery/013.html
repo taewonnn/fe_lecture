@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title></title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        display : none;
+      }
+    </style>
+</head>
+<body>
+    <p id="text"></p>
+    <div id="divOne" class="box"></div>
+    <p class="textTwo"></p>
+    <h1></h1>
+    <script>
+      //JQuery - 요소 선택과 hide
+      
+      // innerText
+      $('#text').text('change!')
+
+      // 상자 나타나기
+      $('#divOne').fadeIn(3000).fadeOut(3000).fadeIn(3000).fadeOut(3000).fadeIn(3000);
+
+      // innerText
+      $('.textTwo').text('안녕하세요');
+
+
+      // 회사 컨벤션 따라 가시면 되는데 2개 다 사용하는 경우는 없습니다.
+      // jQuery임을 명시하기 위해 앞에 $
+      // const $contDesc = $('#text')
+      // $contDesc.text('hello')
+
+      // Node임을 명시하기 위해 앞에 $
+      // const $변수 = document.querySelector('#text')
+      // $변수.innerText = 'hello'
+
+
+
+      // div 클릭했을 때 안 보이게 하기
+      // dom이 준비되면 실행해라!
+      $(function(){
+        $("div").click(function(){
+          $(this).hide();
+        });
+      })
+
+
+    </script>
+</body>
+</html>
